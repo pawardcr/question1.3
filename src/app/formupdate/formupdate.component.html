@@ -1,0 +1,66 @@
+<html>
+<head>
+    <script src="script_form.js"></script>
+</head>
+
+
+
+<body>
+      <table>
+        <tr>
+          <td align="right"><label>No.</label></td>
+          <td align="left"><p id="no"></p> </td>
+        </tr>
+        <tr>
+            <td align="right"><label>Name</label></td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr> 
+            <td align="right"><label>Occupation</label></td>
+            <td><input type="text" id="occ"name="occ"></td>
+        </tr> 
+        <tr>
+            <td align="right">
+              <input type="checkbox" value="1" onclick="check(this)"></td> <!--check box-->
+            <td><label>More Details</label></td>
+        </tr>
+        <!--check before input-->
+        <tr>
+          <td align="right"><label>BirthDate</label></td>
+          <td><input type="date" id="birth" disabled></td>
+        </tr>
+        <tr>
+          <td align="right"><label>Address</label></td>
+          <td><textarea rows="1" cols="25" id="add" disabled></textarea><br></td>
+        </tr>
+  
+        <tr>
+            <td align="right"><label>P.S.</label></td>
+            <td><textarea rows="4" cols="25" id="ps"disabled></textarea><br></td>
+        </tr>
+  
+        <!--No check before input-->
+        <tr>
+          <td align="right"><label>Attached</label></td>
+          <td><input type="file" id="file" onchange="file_size(file)"></td>
+        </tr>
+        <tr>
+          <td align="right"><label>File Name</label></td>
+          <td><label id="name_file"></label>
+  
+            <!--<input type="text" rows="1" cols="25" readonly></textarea>-->
+          
+          </td>
+        </tr>
+        <tr>
+          <td align="right"><label>File Size</label></td>
+          <td> <label id="size"> </label></td>
+        </tr>
+        <tr>
+          <td align="right">
+            <input type="submit" class="button1" value="Regist">
+          </td>
+        </tr>
+      </table>
+</body>
+</html>
