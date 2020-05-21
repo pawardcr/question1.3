@@ -27,6 +27,11 @@ export class AppComponent {
         var selectedNum = this.gridApi.getSelectedRows();
         document.querySelector('#selectedNum').innerHTML = selectedNum.length === 1 ? selectedNum[0].num : '';
     }
+    CellClickedEvent (){
+        var onclick = this.gridApi.onCellClicked();
+
+    }
+    
     //onRowClicked(event: any) { console.log('row', event); }
     //onCellClicked(event: any) { console.log('cell', event); }
     //onSelectionChanged(event: any) { console.log("selection", event); }

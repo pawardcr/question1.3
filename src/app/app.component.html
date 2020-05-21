@@ -1,12 +1,11 @@
-<body>
-
-
-
+<!--<body>
 <div >
     Num:
     <p id="selectedNum'"></p><br>
     
-</div>
+</div>-->
+
+
 <ag-grid-angular
     style="width: 600px; height: 500px;"
     class="ag-theme-alpine"
@@ -15,8 +14,10 @@
     
     selectionChanged="onSelectionChanged($event)"
     rowSelection="single"
+    
 >
+<a routerlink="/formupdate"></a>
 </ag-grid-angular>
-</body>
-<!--<router-outlet></router-outlet>-->
+
+<router-outlet></router-outlet>
 <!--<app-formupdate></app-formupdate>-->

@@ -8,7 +8,7 @@ import {Routes,RouterModule} from '@angular/router';
 import { GridComponent } from './grid/grid.component';
 
 const appRoutes: Routes = [
-  {path:'',component: AppComponent},
+  //{path:'',component: AppComponent},
   {path:'formupdate',component: FormupdateComponent},
 ]
 @NgModule({
