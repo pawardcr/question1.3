@@ -10,13 +10,12 @@ export class AppComponent {
     private gridColumnApi;
     title = 'app';
     
-    
     columnDefs = [
         {headerName: 'No', field: 'num'},
         {headerName: 'Name', field: 'name'},
         {headerName: 'Occupation', field: 'occ'}
       ];
-    
+
     rowData = [
         {num: "1", name: "Prayut", occ: "Nut Seller"},
         {num: "2", name: "Pravit", occ:"Watch seller"},

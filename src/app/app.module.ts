@@ -12,11 +12,19 @@ const appRoutes: Routes = [
   {path:'formupdate',component: FormupdateComponent},
 ]
 @NgModule({
-  declarations: [AppComponent, FormupdateComponent, GridComponent],
-  imports: [BrowserModule,AgGridModule.withComponents([]),
-            RouterModule.forRoot(appRoutes)
+  declarations: [
+    AppComponent, 
+    FormupdateComponent, 
+    GridComponent],
+  imports: [
+    BrowserModule,
+    AgGridModule.withComponents([]),
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+
+  
+}
