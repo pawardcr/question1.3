@@ -5,17 +5,17 @@ import { AppComponent } from './app.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { FormupdateComponent } from './formupdate/formupdate.component';
 import {Routes,RouterModule} from '@angular/router';
-import { GridComponent } from './grid/grid.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
-  //{path:'',component: AppComponent},
+  {path:'',component: AppComponent},
   {path:'formupdate',component: FormupdateComponent},
 ]
 @NgModule({
   declarations: [
     AppComponent, 
-    FormupdateComponent, 
-    GridComponent],
+    FormupdateComponent
+  ],
   imports: [
     BrowserModule,
     AgGridModule.withComponents([]),
