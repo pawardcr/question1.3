@@ -8,36 +8,39 @@ import { AgGridAngular } from 'ag-grid-angular';
 
 export class AppComponent {
     title = 'app'
-    private gridApi
-    private gridColumnApi
-    columnDefs:any
-    rowData:any
+    public gridApi
+    public gridColumnApi
+    //columnDefs:any
+    //rowData:any
+    columnDefs:any[] = [
+        {headerName: 'No', field: 'num'},
+        {headerName: 'Name', field: 'name'},
+        {headerName: 'Occupation', field: 'occ'}
+    ]
+    rowData : any []= [
+        {num: "1", name: "Prayut", occ: "Nut Seller"},
+        {num: "2", name: "Pravit", occ:"Watch seller"},
+        {num: "3", name: "Apirat", occ: "Actor"},
+        {num: "4", name: "Thammanat", occ: "Pharmacist"}
+    ]
+    
     constructor(){
-        this.columnDefs = [
-            {headerName: 'No', field: 'num'},
-            {headerName: 'Name', field: 'name'},
-            {headerName: 'Occupation', field: 'occ'}
-        ]
-        this.rowData = [
-            {num: "1", name: "Prayut", occ: "Nut Seller"},
-            {num: "2", name: "Pravit", occ:"Watch seller"},
-            {num: "3", name: "Apirat", occ: "Actor"},
-            {num: "4", name: "Thammanat", occ: "Pharmacist"}
-        ]
-    
-    
-        console.log(this.rowData[0].num)
+        console.log(onselectionchange)
         
     }
+    /*selectedRow;
+    onSelect(Hero){
+        this.selectedRow = this.rowData;
+    }*/
     
-    //onSelectionChanged() {
-      //  var selectedNum = this.gridApi.getSelectedRows();
-       // document.querySelector('#selectedNum').innerHTML = selectedNum.length === 1 ? selectedNum[0].num : '';
-    //}
+    onSelectionChanged() {
+        var selectedNum = this.gridApi.getSelectedRows();
+        selectedNum = selectedNum.length === 1 ? selectedNum[0].num : '';
+    }
     CellClickedEvent (){
         var onclick = this.gridApi.onCellClicked();
     }
-    //onRowClicked(event: any) { console.log('row', event); }
-    //onCellClicked(event: any) { console.log('cell', event); }
-    //onSelectionChanged(event: any) { console.log("selection", event); }
+    ngOnInit(){
+
+    }
 }

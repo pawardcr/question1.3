@@ -8,8 +8,7 @@ import {Routes,RouterModule} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
-  {path:'',component: AppComponent},
-  {path:'formupdate',component: FormupdateComponent},
+  
 ]
 @NgModule({
   declarations: [

@@ -1,21 +1,20 @@
-
-
 <ag-grid-angular
     #agGrid
     style="width: 600px; height: 400px;"
     class="ag-theme-alpine"
     [rowData]="rowData"
     [columnDefs]="columnDefs"
-
-    selectionChanged="onSelectionChanged($event)"
-    rowSelection="single" 
-    
+   
+    [rowSelection]="rowSelection"
+    (selectionChanged)="onSelectionChanged($event)" 
 >
-
 </ag-grid-angular>
+<div>
+    Selection:<span id="selectedNum" (ngModelChange)="selectedNum"></span>
+</div>
+<li *ngFor="let data1 of rowData"></li>
+<label>No.</label> {{data1}}
 
-
-<label>No.</label>
-
-<!--<router-outlet></router-outlet>-->
+<router-outlet></router-outlet>
 <!--<app-formupdate></app-formupdate>-->
+<!--selectionChanged="onSelectionChanged($event)"-->
