@@ -1,32 +1,38 @@
 import { Component,ViewChild ,Input} from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-
 export class AppComponent {
+    @ViewChild("agGrid",{static: false})agGrid : AgGridAngular;
     title = 'app'
     public gridApi
-    public gridColumnApi
+    selectedNum:any
+    selectedName:any
+    selectedJob:any
+    //public rowSelection
+    //public gridColumnApi
     //columnDefs:any
     //rowData:any
-    columnDefs:any[] = [
+    columnDefs = [
         {headerName: 'No', field: 'num'},
         {headerName: 'Name', field: 'name'},
         {headerName: 'Occupation', field: 'occ'}
     ]
-    rowData : any []= [
+    rowData = [
         {num: "1", name: "Prayut", occ: "Nut Seller"},
         {num: "2", name: "Pravit", occ:"Watch seller"},
         {num: "3", name: "Apirat", occ: "Actor"},
         {num: "4", name: "Thammanat", occ: "Pharmacist"}
     ]
-    
+    rowSelection = 'single'
     constructor(){
-        console.log(onselectionchange)
-        
+        /*for(let row of this.rowData){
+            console.log(JSON.stringify(row.num))
+        }*/
     }
     /*selectedRow;
     onSelect(Hero){
@@ -34,13 +40,27 @@ export class AppComponent {
     }*/
     
     onSelectionChanged() {
-        var selectedNum = this.gridApi.getSelectedRows();
-        selectedNum = selectedNum.length === 1 ? selectedNum[0].num : '';
+        this.selectedNum = this.agGrid.api.getSelectedRows();
+        this.selectedNum = this.selectedNum.length === 1 ? this.selectedNum[0].num : '';
+
+        this.selectedName = this.agGrid.api.getSelectedRows();
+        this.selectedName = this.selectedNum.length === 1 ? this.selectedName[0].name : '';
+
+        this.selectedJob = this.agGrid.api.getSelectedRows();
+        this.selectedJob = this.selectedJob.length === 1 ? this.selectedJob[0].occ : '';
+        //console.log(this.selectedNum)
     }
-    CellClickedEvent (){
-        var onclick = this.gridApi.onCellClicked();
-    }
+
     ngOnInit(){
 
     }
+    /*getSelectedRows(){
+        const selectedNodes = this.agGrid.api.getSelectedRows()
+        const selectedData = selectedNodes.map(node=> node.data)
+        const selectedDataStringPresentation = selectedData
+        .map(node => node.make+" "+node.model).join(",")
+        alert(`Selected Nodes :${selectedDataStringPresentation}`)
+        console.log(selectedDataStringPresentation)
+        
+    }*/
 }
