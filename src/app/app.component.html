@@ -1,7 +1,5 @@
 <html>
 <head>
-    
-    <script src="script1.js"></script>
 </head>
 
 <ag-grid-angular
@@ -34,22 +32,21 @@
           <!--check box--> 
           <tr>
               <td align="right">
-                <input type="checkbox" value="N" onclick="check(this)"></td> 
+                <input type="checkbox" (click)="check(value)"></td> 
               <td><label>More Details</label></td>
           </tr>
           <!--check before input-->
           <tr>
             <td align="right"><label>BirthDate</label></td>
-            <td><input type="date" id="birth" disabled></td>
+            <td><input type="date" id="birth" disabled="disabled"></td>
           </tr>
           <tr>
             <td align="right"><label>Address</label></td>
-            <td><textarea rows="1" cols="25" id="add" disabled></textarea><br></td>
+            <td><textarea rows="1" cols="25" id="add" disabled="disabled"></textarea><br></td>
           </tr>
-    
           <tr>
               <td align="right"><label>P.S.</label></td>
-              <td><textarea rows="4" cols="25" id="ps"disabled></textarea><br></td>
+              <td><textarea rows="4" cols="25" id="ps" disabled="disabled"></textarea><br></td>
           </tr>
     
           <!--No check before input-->

@@ -7,6 +7,7 @@ import { FormupdateComponent } from './formupdate/formupdate.component';
 import {Routes,RouterModule} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+
 const appRoutes: Routes = [
   
 ]

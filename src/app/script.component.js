@@ -1,5 +1,4 @@
 //check to enable
-
 function check(chk1){
     if(chk1.checked == true) {
     document.getElementById('birth').disabled=false;

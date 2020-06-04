@@ -13,6 +13,7 @@ export class AppComponent {
     selectedNum:any
     selectedName:any
     selectedJob:any
+    en1 :any
     //public rowSelection
     //public gridColumnApi
     //columnDefs:any
@@ -63,4 +64,21 @@ export class AppComponent {
         console.log(selectedDataStringPresentation)
         
     }*/
+    
+    check(chk1){
+        
+        if(chk1 == 1) {
+            document.getElementById('birth').setAttribute("disabled","disabled");
+            document.getElementById('add').setAttribute("disabled","disabled");
+            document.getElementById('ps').setAttribute("disabled","disabled");
+        
+        }
+        else {
+            document.getElementById('birth').removeAttribute('disabled')
+            document.getElementById('add').removeAttribute("disabled")
+            document.getElementById('ps').removeAttribute("disabled")
+            
+        }
+    }
+
 }
