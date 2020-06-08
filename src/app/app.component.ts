@@ -8,12 +8,13 @@ import { AgGridAngular } from 'ag-grid-angular';
 })
 export class AppComponent {
     @ViewChild("agGrid",{static: false})agGrid : AgGridAngular;
+    
     title = 'app'
     public gridApi
     selectedNum:any
     selectedName:any
     selectedJob:any
-    en1 :any
+    //check1:boolean = true;
     //public rowSelection
     //public gridColumnApi
     //columnDefs:any
@@ -65,20 +66,20 @@ export class AppComponent {
         
     }*/
     
-    check(chk1){
+    check(check1:Boolean){
         
-        if(chk1 == 1) {
-            document.getElementById('birth').setAttribute("disabled","disabled");
-            document.getElementById('add').setAttribute("disabled","disabled");
-            document.getElementById('ps').setAttribute("disabled","disabled");
+        if(check1 == true) {
+            document.getElementById('birth').setAttribute("disabled","falsed");
+            document.getElementById('add').setAttribute("disabled","falsed");
+            document.getElementById('ps').setAttribute("disabled","falsed");
         
         }
-        else {
+        if(check1 != true){
             document.getElementById('birth').removeAttribute('disabled')
             document.getElementById('add').removeAttribute("disabled")
             document.getElementById('ps').removeAttribute("disabled")
             
         }
+        
     }
-
 }
