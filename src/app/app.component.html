@@ -32,34 +32,32 @@
           <!--check box--> 
           <tr>
             <td align="right">
-              <input type="checkbox" value="true" (click)="check(value)"></td> <!--check box-->
+              <input type="checkbox" (click)="check_en()"></td> <!--check box-->
             <td><label>More Details</label></td>
           </tr>
           <!--check before input-->
           <tr>
             <td align="right"><label>BirthDate</label></td>
-            <td><input type="date" id="birth" disabled="true"></td>
+            <td><input type="date" id="birth" [disabled]="isChecked"></td>
           </tr>
           <tr>
             <td align="right"><label>Address</label></td>
-            <td><textarea rows="1" cols="25" id="add" disabled="true"></textarea><br></td>
+            <td><textarea rows="1" cols="25" id="add" [disabled]="isChecked"></textarea><br></td>
           </tr>
           <tr>
               <td align="right"><label>P.S.</label></td>
-              <td><textarea rows="4" cols="25" id="ps" disabled="true"></textarea><br></td>
+              <td><textarea rows="4" cols="25" id="ps" [disabled]="isChecked"></textarea><br></td>
           </tr>
     
           <!--No check before input-->
           <tr>
             <td align="right"><label>Attached</label></td>
-            <td><input type="file" id="file" onchange="file_size(file)"></td>
+            <td><input type="file" id="file" class="in"></td>
           </tr>
           <tr>
             <td align="right"><label>File Name</label></td>
             <td><label id="name_file"></label>
-    
               <!--<input type="text" rows="1" cols="25" readonly></textarea>-->
-            
             </td>
           </tr>
           <tr>

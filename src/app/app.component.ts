@@ -1,5 +1,6 @@
 import { Component,ViewChild ,Input} from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
+//import { type } from 'os';
 
 @Component({
     selector: 'app-root',
@@ -14,7 +15,9 @@ export class AppComponent {
     selectedNum:any
     selectedName:any
     selectedJob:any
-    //check1:boolean = true;
+    isChecked : boolean = true;
+    file : File = null
+
     //public rowSelection
     //public gridColumnApi
     //columnDefs:any
@@ -66,20 +69,23 @@ export class AppComponent {
         
     }*/
     
-    check(check1:Boolean){
-        
-        if(check1 == true) {
-            document.getElementById('birth').setAttribute("disabled","falsed");
+
+    check_en():any{
+        if (this.isChecked == false) {
+            this.isChecked = true;
+          } else {
+            this.isChecked = false;
+          }
+        /*if(this.status) {
+            document.getElementById('birth').removeAttribute("disabled")
+            document.getElementById('add').removeAttribute("disabled")
+            document.getElementById('ps').removeAttribute("disabled")
+        }
+        else{
+            document.getElementById('birth').setAttribute("disabled","false");
             document.getElementById('add').setAttribute("disabled","falsed");
             document.getElementById('ps').setAttribute("disabled","falsed");
         
-        }
-        if(check1 != true){
-            document.getElementById('birth').removeAttribute('disabled')
-            document.getElementById('add').removeAttribute("disabled")
-            document.getElementById('ps').removeAttribute("disabled")
-            
-        }
-        
+        } */   
     }
 }
