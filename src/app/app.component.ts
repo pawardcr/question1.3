@@ -17,7 +17,8 @@ export class AppComponent {
     selectedJob:any
     isChecked : boolean = true;
     file : File = null
-
+    file_name : any
+    file_size :any
     //public rowSelection
     //public gridColumnApi
     //columnDefs:any
@@ -68,14 +69,23 @@ export class AppComponent {
         console.log(selectedDataStringPresentation)
         
     }*/
-    
+    file_check(files){
+        this.file = files.item(0)
+        this.file_name = this.file.name
+        let x  = this.file.size
+        let n1 = Math.round((x / 1024));
+        this.file_size = n1+'KB'
+        console.log(n1)
+    }
 
-    check_en():any{
-        if (this.isChecked == false) {
+    check_btn(){
+        if (this.isChecked == false) 
+        {
             this.isChecked = true;
-          } else {
+        } else 
+        {
             this.isChecked = false;
-          }
+        }
         /*if(this.status) {
             document.getElementById('birth').removeAttribute("disabled")
             document.getElementById('add').removeAttribute("disabled")
