@@ -1,59 +1,53 @@
 <html>
 <head>
-    <script src="script_form.js"></script>
 </head>
-
 <body>
   <form>
       <table>
         <tr>
           <td align="right"><label>No.</label></td>
-          <td align="left">{{selectedNum}}</td>
+          <td align="left">{{num}}</td>
         </tr>
         <tr>
             <td align="right"><label>Name</label></td>
-            <td><input type="text" id="name"></td>
+            <td><input type="text"  value="{{name}}"></td>
         </tr>
         <tr> 
             <td align="right"><label>Occupation</label></td>
-            <td><input type="text" id="occ"name="occ"></td>
-        </tr> 
+            <td><input type="text" value="{{occ}}"></td>
+        </tr>
+        <!--check box--> 
         <tr>
-            <td align="right">
-              <input type="checkbox" value="1" onclick="check(this)"></td> <!--check box-->
-            <td><label>More Details</label></td>
+          <td align="right">
+            <input type="checkbox" (click)="check_btn()"></td> <!--check box-->
+          <td><label>More Details</label></td>
         </tr>
         <!--check before input-->
         <tr>
           <td align="right"><label>BirthDate</label></td>
-          <td><input type="date" id="birth" disabled></td>
+          <td><input type="date" id="birth" [disabled]="isChecked"></td>
         </tr>
         <tr>
           <td align="right"><label>Address</label></td>
-          <td><textarea rows="1" cols="25" id="add" disabled></textarea><br></td>
+          <td><textarea rows="1" cols="25" id="add" [disabled]="isChecked"></textarea><br></td>
         </tr>
-  
         <tr>
             <td align="right"><label>P.S.</label></td>
-            <td><textarea rows="4" cols="25" id="ps"disabled></textarea><br></td>
+            <td><textarea rows="4" cols="25" id="ps" [disabled]="isChecked"></textarea><br></td>
         </tr>
   
         <!--No check before input-->
         <tr>
           <td align="right"><label>Attached</label></td>
-          <td><input type="file" id="file" onchange="file_size(file)"></td>
+          <td><input type="file" id="file" (change)="file_check($event.target.files)"></td>
         </tr>
         <tr>
           <td align="right"><label>File Name</label></td>
-          <td><label id="name_file"></label>
-  
-            <!--<input type="text" rows="1" cols="25" readonly></textarea>-->
-          
-          </td>
+          <td><label id="file_name" >{{file_name}}</label></td>
         </tr>
         <tr>
           <td align="right"><label>File Size</label></td>
-          <td> <label id="size"> </label></td>
+          <td> <label id="size">{{file_size}} </label></td>
         </tr>
         <tr>
           <td align="right">

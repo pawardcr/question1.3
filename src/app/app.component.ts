@@ -1,13 +1,15 @@
 import { Component,ViewChild ,Input} from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
+import { FormupdateComponent } from './formupdate/formupdate.component';
 //import { type } from 'os';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
+
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent{
     @ViewChild("agGrid",{static: false})agGrid : AgGridAngular;
     
     title = 'app'
@@ -48,7 +50,7 @@ export class AppComponent {
     onSelectionChanged() {
         this.selectedNum = this.agGrid.api.getSelectedRows();
         this.selectedNum = this.selectedNum.length === 1 ? this.selectedNum[0].num : '';
-
+        
         this.selectedName = this.agGrid.api.getSelectedRows();
         this.selectedName = this.selectedNum.length === 1 ? this.selectedName[0].name : '';
 
