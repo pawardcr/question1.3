@@ -1,12 +1,11 @@
 import { Component,ViewChild ,Input} from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { FormupdateComponent } from './formupdate/formupdate.component';
-//import { type } from 'os';
+
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent{
@@ -17,7 +16,11 @@ export class AppComponent{
     selectedNum:any
     selectedName:any
     selectedJob:any
+    selectedAll:any []
+   
+    //checkbox
     isChecked : boolean = true;
+    //file
     file : File = null
     file_name : any
     file_size :any
@@ -28,10 +31,16 @@ export class AppComponent{
     columnDefs = [
         {headerName: 'No', field: 'num'},
         {headerName: 'Name', field: 'name'},
-        {headerName: 'Occupation', field: 'occ'}
+        {headerName: 'Occupation', field: 'occ'},
+        {headerName: 'Birthdate',field:'dob'},
+        {headerName: 'Address',field: 'add'},
+        {headerName: 'P.S',field:'ps'},
+        {headerName: 'File Name',field:'fname'},
+        {headerName: 'File Size',field:'fsize'}
+
     ]
     rowData = [
-        {num: "1", name: "Prayut", occ: "Nut Seller"},
+        {num: "1", name: "Prayut", occ: "Nut Seller",dob:" ",add:" ",ps:" ",fname:" ",fsize: " "},
         {num: "2", name: "Pravit", occ:"Watch seller"},
         {num: "3", name: "Apirat", occ: "Actor"},
         {num: "4", name: "Thammanat", occ: "Pharmacist"}
@@ -48,15 +57,18 @@ export class AppComponent{
     }*/
     
     onSelectionChanged() {
-        this.selectedNum = this.agGrid.api.getSelectedRows();
+        /*this.selectedNum = this.agGrid.api.getSelectedRows();
         this.selectedNum = this.selectedNum.length === 1 ? this.selectedNum[0].num : '';
         
         this.selectedName = this.agGrid.api.getSelectedRows();
         this.selectedName = this.selectedNum.length === 1 ? this.selectedName[0].name : '';
 
         this.selectedJob = this.agGrid.api.getSelectedRows();
-        this.selectedJob = this.selectedJob.length === 1 ? this.selectedJob[0].occ : '';
-        //console.log(this.selectedNum)
+        this.selectedJob = this.selectedJob.length === 1 ? this.selectedJob[0].occ : '';*/
+        
+        this.selectedAll= this.agGrid.api.getSelectedRows();
+        this.selectedAll = this.selectedAll.length === 1 ? this.selectedAll[0] : '';
+        
     }
 
     ngOnInit(){

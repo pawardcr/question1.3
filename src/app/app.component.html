@@ -1,17 +1,73 @@
+
 <ag-grid-angular
     #agGrid
-    style="width: 600px; height: 400px;"
+    style="width: 1200px; height: 400px;"
     class="ag-theme-alpine"
-    [rowData]="rowData"
+    [(rowData)]="rowData"
     [columnDefs]="columnDefs"
     [rowSelection]="rowSelection"
     (selectionChanged)="onSelectionChanged($event)"
     (click)="onSelectionChanged(rowSelection)" 
-    
+   
 >
+<!-- (selectionChanged)="onSelectionChanged($event)"-->
 </ag-grid-angular>
-<!--<app-formupdate [name]="selectedName" [num]="selectedNum" [occ]="selectedJob"></app-formupdate>-->
 
-
-<router-outlet></router-outlet>
-<!--<app-formupdate></app-formupdate>-->
+<body>
+    <div *ngIf="selectedAll">
+        <table>
+          <tr>
+            <td align="right"><label>No.</label></td>
+            <td align="left">{{selectedAll.num}}</td>
+          </tr>
+          <tr>
+              <td align="right"><label>Name</label></td>
+              <td><input type="text" [(ngModel)]="selectedAll.name" ></td>
+          </tr>
+          <tr> 
+              <td align="right"><label>Occupation</label></td>
+              <td><input type="text" [(ngModel)]="selectedAll.occ"></td>
+          </tr>
+          <!--check box--> 
+          <tr>
+            <td align="right">
+              <input type="checkbox" (click)="check_btn()"></td> <!--check box-->
+            <td><label>More Details</label></td>
+          </tr>
+          <!--check before input-->
+          <tr>
+            <td align="right"><label>BirthDate</label></td>
+            <td><input type="date" id="birth" [disabled]="isChecked"></td>
+          </tr>
+          <tr>
+            <td align="right"><label>Address</label></td>
+            <td><textarea rows="1" cols="25" id="add" [disabled]="isChecked"></textarea><br></td>
+          </tr>
+          <tr>
+              <td align="right"><label>P.S.</label></td>
+              <td><textarea rows="4" cols="25" id="ps" [disabled]="isChecked"></textarea><br></td>
+          </tr>
+    
+          <!--No check before input-->
+          <tr>
+            <td align="right"><label>Attached</label></td>
+            <td><input type="file" id="file" (change)="file_check($event.target.files)"></td>
+          </tr>
+          <tr>
+            <td align="right"><label>File Name</label></td>
+            <td><label id="file_name" >{{file_name}}</label></td>
+          </tr>
+          <tr>
+            <td align="right"><label>File Size</label></td>
+            <td> <label id="size">{{file_size}} </label></td>
+          </tr>
+          <tr>
+            <td align="right">
+              <input type="submit" class="button1" value="Regist">
+            </td>
+          </tr>
+        </table>
+    </div>
+  </body>
+<!--<router-outlet></router-outlet>
+<app-formupdate [name]="selectedName" [num]="selectedNum" [occ]="selectedJob"></app-formupdate>-->
