@@ -1,6 +1,7 @@
 import { Component,ViewChild ,Input} from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { FormupdateComponent } from './formupdate/formupdate.component';
+import { RowNode } from 'ag-grid-community';
 
 
 @Component({
@@ -8,26 +9,35 @@ import { FormupdateComponent } from './formupdate/formupdate.component';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
+
+
 export class AppComponent{
     @ViewChild("agGrid",{static: false})agGrid : AgGridAngular;
-    
+
     title = 'app'
     public gridApi
+    public gridOptions
+    public getRowNodeId
     selectedNum:any
     selectedName:any
     selectedJob:any
-    selectedAll:any []
-   
+    selectedAll:any
+    selectednode :any
+    
     //checkbox
     isChecked : boolean = true;
     //file
     file : File = null
     file_name : any
     file_size :any
+    
     //public rowSelection
     //public gridColumnApi
     //columnDefs:any
     //rowData:any
+    
+    add_name :any
+    
     columnDefs = [
         {headerName: 'No', field: 'num'},
         {headerName: 'Name', field: 'name'},
@@ -39,17 +49,20 @@ export class AppComponent{
         {headerName: 'File Size',field:'fsize'}
 
     ]
+    //,dob:" ",add:" ",ps:" ",fname:" ",fsize: " "
+    name1
+    name2
+    name3
+    name4
     rowData = [
-        {num: "1", name: "Prayut", occ: "Nut Seller",dob:" ",add:" ",ps:" ",fname:" ",fsize: " "},
+        {num: "1", name: "Prayut", occ: "Nut Seller"},
         {num: "2", name: "Pravit", occ:"Watch seller"},
         {num: "3", name: "Apirat", occ: "Actor"},
         {num: "4", name: "Thammanat", occ: "Pharmacist"}
     ]
     rowSelection = 'single'
     constructor(){
-        /*for(let row of this.rowData){
-            console.log(JSON.stringify(row.num))
-        }*/
+     
     }
     /*selectedRow;
     onSelect(Hero){
@@ -66,23 +79,24 @@ export class AppComponent{
         this.selectedJob = this.agGrid.api.getSelectedRows();
         this.selectedJob = this.selectedJob.length === 1 ? this.selectedJob[0].occ : '';*/
         
-        this.selectedAll= this.agGrid.api.getSelectedRows();
+        this.selectedAll = this.agGrid.api.getSelectedRows();
         this.selectedAll = this.selectedAll.length === 1 ? this.selectedAll[0] : '';
-        
+        //console.log(this.agGrid.api.getSelectedRows())
     }
-
+    regist(){
+        
+        this.add_name = this.selectedAll.name    
+        this.rowData = [
+            {num: "1", name: "Prayut", occ: "Nut Seller"},
+            {num: "2", name: "Pravit", occ:"Watch seller"},
+            {num: "3", name: "Apirat", occ: "Actor"},
+            {num: "4", name: "Thammanat", occ: "Pharmacist"}
+        ]
+       
+    }
     ngOnInit(){
 
     }
-    /*getSelectedRows(){
-        const selectedNodes = this.agGrid.api.getSelectedRows()
-        const selectedData = selectedNodes.map(node=> node.data)
-        const selectedDataStringPresentation = selectedData
-        .map(node => node.make+" "+node.model).join(",")
-        alert(`Selected Nodes :${selectedDataStringPresentation}`)
-        console.log(selectedDataStringPresentation)
-        
-    }*/
     file_check(files){
         this.file = files.item(0)
         this.file_name = this.file.name
@@ -100,16 +114,6 @@ export class AppComponent{
         {
             this.isChecked = false;
         }
-        /*if(this.status) {
-            document.getElementById('birth').removeAttribute("disabled")
-            document.getElementById('add').removeAttribute("disabled")
-            document.getElementById('ps').removeAttribute("disabled")
-        }
-        else{
-            document.getElementById('birth').setAttribute("disabled","false");
-            document.getElementById('add').setAttribute("disabled","falsed");
-            document.getElementById('ps').setAttribute("disabled","falsed");
         
-        } */   
     }
 }

@@ -1,15 +1,20 @@
 
 <ag-grid-angular
+    
     #agGrid
     style="width: 1200px; height: 400px;"
     class="ag-theme-alpine"
-    [(rowData)]="rowData"
+    
+    [rowData]="rowData"
     [columnDefs]="columnDefs"
     [rowSelection]="rowSelection"
+    
+    [getRowNodeId]="getRowNodeId"
     (selectionChanged)="onSelectionChanged($event)"
-    (click)="onSelectionChanged(rowSelection)" 
+    (click)="onSelectionChanged(rowData)" 
    
 >
+
 <!-- (selectionChanged)="onSelectionChanged($event)"-->
 </ag-grid-angular>
 
@@ -37,15 +42,15 @@
           <!--check before input-->
           <tr>
             <td align="right"><label>BirthDate</label></td>
-            <td><input type="date" id="birth" [disabled]="isChecked"></td>
+            <td><input type="date" id="birth" [disabled]="isChecked" [(ngModel)]="selectedAll.dob"></td>
           </tr>
           <tr>
             <td align="right"><label>Address</label></td>
-            <td><textarea rows="1" cols="25" id="add" [disabled]="isChecked"></textarea><br></td>
+            <td><textarea rows="1" cols="25" id="add" [disabled]="isChecked" [(ngModel)]="selectedAll.add"></textarea><br></td>
           </tr>
           <tr>
               <td align="right"><label>P.S.</label></td>
-              <td><textarea rows="4" cols="25" id="ps" [disabled]="isChecked"></textarea><br></td>
+              <td><textarea rows="4" cols="25" id="ps" [disabled]="isChecked" [(ngModel)]="selectedAll.ps"></textarea><br></td>
           </tr>
     
           <!--No check before input-->
@@ -63,7 +68,7 @@
           </tr>
           <tr>
             <td align="right">
-              <input type="submit" class="button1" value="Regist">
+              <input type="submit" class="button1" value="Regist" (click)="regist()">
             </td>
           </tr>
         </table>
