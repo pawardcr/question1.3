@@ -2,8 +2,8 @@ import { Component,ViewChild ,Input} from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { FormupdateComponent } from './formupdate/formupdate.component';
 import { RowNode } from 'ag-grid-community';
-
-
+import { Person } from './data';
+import {PERSONS } from './data-person';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -16,14 +16,15 @@ export class AppComponent{
 
     title = 'app'
     public gridApi
-    public gridOptions
+    //public gridOptions
     public getRowNodeId
+    public gridColumnApi
     selectedNum:any
     selectedName:any
     selectedJob:any
     selectedAll:any
     selectednode :any
-    
+
     //checkbox
     isChecked : boolean = true;
     //file
@@ -31,10 +32,7 @@ export class AppComponent{
     file_name : any
     file_size :any
     
-    //public rowSelection
-    //public gridColumnApi
-    //columnDefs:any
-    //rowData:any
+    
     
     add_name :any
     
@@ -50,24 +48,25 @@ export class AppComponent{
 
     ]
     //,dob:" ",add:" ",ps:" ",fname:" ",fsize: " "
-    name1
-    name2
-    name3
-    name4
+    
     rowData = [
-        {num: "1", name: "Prayut", occ: "Nut Seller"},
-        {num: "2", name: "Pravit", occ:"Watch seller"},
-        {num: "3", name: "Apirat", occ: "Actor"},
-        {num: "4", name: "Thammanat", occ: "Pharmacist"}
+        {num: 1, name: "Prayut", occ: "Nut Seller"},
+        {num: 2, name: "Pravit", occ:"Watch seller"},
+        {num: 3, name: "Apirat", occ: "Actor"},
+        {num: 4, name: "Thammanat", occ: "Pharmacist"}
     ]
-    rowSelection = 'single'
+    rowSelection='single'
+    
+    gridOptions = { 
+        getRowNodeId :function(data) {
+            
+            return data.num
+        }
+        
+    }   
     constructor(){
-     
+       
     }
-    /*selectedRow;
-    onSelect(Hero){
-        this.selectedRow = this.rowData;
-    }*/
     
     onSelectionChanged() {
         /*this.selectedNum = this.agGrid.api.getSelectedRows();
@@ -79,20 +78,26 @@ export class AppComponent{
         this.selectedJob = this.agGrid.api.getSelectedRows();
         this.selectedJob = this.selectedJob.length === 1 ? this.selectedJob[0].occ : '';*/
         
-        this.selectedAll = this.agGrid.api.getSelectedRows();
+        this.selectedAll = this.gridApi.getSelectedRows();
         this.selectedAll = this.selectedAll.length === 1 ? this.selectedAll[0] : '';
-        //console.log(this.agGrid.api.getSelectedRows())
-    }
-    regist(){
         
-        this.add_name = this.selectedAll.name    
-        this.rowData = [
-            {num: "1", name: "Prayut", occ: "Nut Seller"},
-            {num: "2", name: "Pravit", occ:"Watch seller"},
-            {num: "3", name: "Apirat", occ: "Actor"},
-            {num: "4", name: "Thammanat", occ: "Pharmacist"}
-        ]
-       
+        
+    }
+    
+    regist(){
+        this.add_name = this.selectedAll.name
+        var rowNode = this.gridApi.getRowNode(this.selectedAll.num)
+        
+
+        var newData = {
+            name:this.add_name
+            
+        };
+        rowNode.updateData(newData);
+    }
+    onGridReady(params) {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
     }
     ngOnInit(){
 

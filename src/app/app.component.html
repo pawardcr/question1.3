@@ -1,20 +1,17 @@
 
 <ag-grid-angular
-    
     #agGrid
     style="width: 1200px; height: 400px;"
     class="ag-theme-alpine"
     
-    [rowData]="rowData"
-    [columnDefs]="columnDefs"
-    [rowSelection]="rowSelection"
     
-    [getRowNodeId]="getRowNodeId"
+    [columnDefs]="columnDefs"
+    [rowData]="rowData"
+    [rowSelection] = "rowSelection"
+    (gridReady)="onGridReady($event)"
     (selectionChanged)="onSelectionChanged($event)"
-    (click)="onSelectionChanged(rowData)" 
-   
+    (click)="onSelectionChanged(rowData)"
 >
-
 <!-- (selectionChanged)="onSelectionChanged($event)"-->
 </ag-grid-angular>
 
@@ -68,7 +65,7 @@
           </tr>
           <tr>
             <td align="right">
-              <input type="submit" class="button1" value="Regist" (click)="regist()">
+              <button class="button1" (click)="regist()">Regist</button>
             </td>
           </tr>
         </table>
