@@ -32,9 +32,16 @@ export class AppComponent{
     file_name : any
     file_size :any
     
-    
+
     
     add_name :any
+    add_num : any
+    add_occ : any
+    add_birth :any
+    add_adr :any
+    add_ps :any
+    add_fname: any
+    add_fsize:any
     
     columnDefs = [
         {headerName: 'No', field: 'num'},
@@ -50,10 +57,10 @@ export class AppComponent{
     //,dob:" ",add:" ",ps:" ",fname:" ",fsize: " "
     
     rowData = [
-        {num: 1, name: "Prayut", occ: "Nut Seller"},
-        {num: 2, name: "Pravit", occ:"Watch seller"},
-        {num: 3, name: "Apirat", occ: "Actor"},
-        {num: 4, name: "Thammanat", occ: "Pharmacist"}
+        {num: 1, name: "Prayut", occ: "Nut Seller",dob:" ",add:" ",ps:" ",fname:" ",fsize: " "},
+        {num: 2, name: "Pravit", occ:"Watch seller",dob:" ",add:" ",ps:" ",fname:" ",fsize: " "},
+        {num: 3, name: "Apirat", occ: "Actor",dob:" ",add:" ",ps:" ",fname:" ",fsize: " "},
+        {num: 4, name: "Thammanat", occ: "Pharmacist",dob:" ",add:" ",ps:" ",fname:" ",fsize: " "}
     ]
     rowSelection='single'
     
@@ -80,21 +87,41 @@ export class AppComponent{
         
         this.selectedAll = this.gridApi.getSelectedRows();
         this.selectedAll = this.selectedAll.length === 1 ? this.selectedAll[0] : '';
-        
+        //console.log(this.selectedAll.num)
+       
         
     }
     
     regist(){
         this.add_name = this.selectedAll.name
-        var rowNode = this.gridApi.getRowNode(this.selectedAll.num)
+        this.add_num = this.selectedAll.num
+        this.add_occ = this.selectedAll.occ
+        this.add_birth =this.selectedAll.dob
+        this.add_adr = this.selectedAll.add
+        this.add_ps = this.selectedAll.ps
         
-
+        var rowNode = this.gridApi.getRowNode(this.selectedAll.num-1)
+        console.log(rowNode)
         var newData = {
-            name:this.add_name
-            
+            num:this.add_num,
+            name:this.add_name,
+            occ : this.add_occ,
+            dob:this.add_birth,
+            add:this.add_adr,
+            ps:this.add_ps,
+            fname:this.file_name,
+            fsize:this.file_size
         };
-        rowNode.updateData(newData);
+        rowNode.updateData(newData)
+        /*this.add_name = this.selectedAll.name
+        var rowNode = this.gridApi.getRowNode(this.selectedAll.num);
+        alert("param ที่ถูกส่งเข้ามา : "+ this.selectedAll.num + " . แถวที่กำลังจะถูกเปลี่ยน : " + rowNode.data.name);*/
+
+
+    
     }
+
+
     onGridReady(params) {
         this.gridApi = params.api;
         this.gridColumnApi = params.columnApi;
@@ -108,9 +135,8 @@ export class AppComponent{
         let x  = this.file.size
         let n1 = Math.round((x / 1024));
         this.file_size = n1+'KB'
-        console.log(n1)
+        //console.log(n1)
     }
-
     check_btn(){
         if (this.isChecked == false) 
         {
