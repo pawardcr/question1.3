@@ -1,20 +1,19 @@
-
-<ag-grid-angular
-    #agGrid
-    style="width: 1200px; height: 400px;"
-    class="ag-theme-alpine"
-    
-    
-    [columnDefs]="columnDefs"
-    [rowData]="rowData"
-    [rowSelection] = "rowSelection"
-    (gridReady)="onGridReady($event)"
-    (selectionChanged)="onSelectionChanged($event)"
-    (click)="onSelectionChanged(rowData)"
->
-<!-- (selectionChanged)="onSelectionChanged($event)"-->
-</ag-grid-angular>
-
+<div>
+  <ag-grid-angular
+      #agGrid
+      style="width: 800px; height: 400px;"
+      class="ag-theme-alpine"
+      [defaultColDef]="defaultColDef"
+      [columnDefs]="columnDefs"
+      [rowData]="rowData"
+      [rowSelection] = "rowSelection"
+      (gridReady)="onGridReady($event)"
+      
+      (selectionChanged)="onSelectionChanged($event)"
+      (click)="onSelectionChanged(rowData)"
+  >
+  </ag-grid-angular>
+</div>
 <body>
     <div *ngIf="selectedAll">
         <table>
@@ -71,5 +70,5 @@
         </table>
     </div>
   </body>
-<!--<router-outlet></router-outlet>
-<app-formupdate [name]="selectedName" [num]="selectedNum" [occ]="selectedJob"></app-formupdate>-->
+<router-outlet></router-outlet>
+

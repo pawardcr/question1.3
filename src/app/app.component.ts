@@ -24,7 +24,7 @@ export class AppComponent{
     selectedJob:any
     selectedAll:any
     selectednode :any
-
+    checkgrid :boolean
     //checkbox
     isChecked : boolean = true;
     //file
@@ -42,9 +42,11 @@ export class AppComponent{
     add_ps :any
     add_fname: any
     add_fsize:any
-    
+    defaultColDef = { 
+        resizable: true ,
+        width: 100,};
     columnDefs = [
-        {headerName: 'No', field: 'num'},
+        {headerName: 'No', field: 'num',width:70,resizable: false},
         {headerName: 'Name', field: 'name'},
         {headerName: 'Occupation', field: 'occ'},
         {headerName: 'Birthdate',field:'dob'},
@@ -71,23 +73,20 @@ export class AppComponent{
         }
         
     }   
-    constructor(){
-       
+    constructor(){  
     }
-    
     onSelectionChanged() {
         /*this.selectedNum = this.agGrid.api.getSelectedRows();
         this.selectedNum = this.selectedNum.length === 1 ? this.selectedNum[0].num : '';
-        
         this.selectedName = this.agGrid.api.getSelectedRows();
         this.selectedName = this.selectedNum.length === 1 ? this.selectedName[0].name : '';
-
         this.selectedJob = this.agGrid.api.getSelectedRows();
         this.selectedJob = this.selectedJob.length === 1 ? this.selectedJob[0].occ : '';*/
         
         this.selectedAll = this.gridApi.getSelectedRows();
         this.selectedAll = this.selectedAll.length === 1 ? this.selectedAll[0] : '';
         //console.log(this.selectedAll.num)
+        //this.checkgrid = false
        
         
     }
@@ -116,12 +115,8 @@ export class AppComponent{
         /*this.add_name = this.selectedAll.name
         var rowNode = this.gridApi.getRowNode(this.selectedAll.num);
         alert("param ที่ถูกส่งเข้ามา : "+ this.selectedAll.num + " . แถวที่กำลังจะถูกเปลี่ยน : " + rowNode.data.name);*/
-
-
-    
+        this.selectedAll = ''
     }
-
-
     onGridReady(params) {
         this.gridApi = params.api;
         this.gridColumnApi = params.columnApi;
