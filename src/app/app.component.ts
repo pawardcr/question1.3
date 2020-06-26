@@ -116,6 +116,7 @@ export class AppComponent{
         var rowNode = this.gridApi.getRowNode(this.selectedAll.num);
         alert("param ที่ถูกส่งเข้ามา : "+ this.selectedAll.num + " . แถวที่กำลังจะถูกเปลี่ยน : " + rowNode.data.name);*/
         this.selectedAll = ''
+        this.isChecked = true
     }
     onGridReady(params) {
         this.gridApi = params.api;
@@ -140,6 +141,5 @@ export class AppComponent{
         {
             this.isChecked = false;
         }
-        
     }
 }
