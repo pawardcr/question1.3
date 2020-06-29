@@ -1,21 +1,22 @@
-<div>
-  <ag-grid-angular
-      #agGrid
-      style="width: 800px; height: 400px;"
-      class="ag-theme-alpine"
-      [defaultColDef]="defaultColDef"
-      [columnDefs]="columnDefs"
-      [rowData]="rowData"
-      [rowSelection] = "rowSelection"
-      (gridReady)="onGridReady($event)"
-      
-      (selectionChanged)="onSelectionChanged($event)"
-      (click)="onSelectionChanged(rowData)"
-  >
-  </ag-grid-angular>
-</div>
 <body>
-    <div *ngIf="selectedAll">
+  <div>
+    <ag-grid-angular
+        #agGrid
+        style="width: 800px; height: 400px;"
+        class="ag-theme-alpine"
+        [defaultColDef]="defaultColDef"
+        [columnDefs]="columnDefs"
+        [rowData]="rowData"
+        [rowSelection] = "rowSelection"
+        (gridReady)="onGridReady($event)"
+        
+        (selectionChanged)="onSelectionChanged($event)"
+        (click)="onSelectionChanged(rowData)"
+    >
+    </ag-grid-angular>
+  </div>
+
+  <div *ngIf="selectedAll">
         <table>
           <tr>
             <td align="right"><label>No.</label></td>
@@ -68,7 +69,7 @@
             </td>
           </tr>
         </table>
-    </div>
-  </body>
+  </div>
+</body>
 <router-outlet></router-outlet>
 
