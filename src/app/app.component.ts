@@ -1,9 +1,6 @@
 import { Component,ViewChild ,Input} from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { FormupdateComponent } from './formupdate/formupdate.component';
-import { RowNode } from 'ag-grid-community';
-import { Person } from './data';
-import {PERSONS } from './data-person';
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -29,10 +26,10 @@ export class AppComponent{
     isChecked : boolean = true;
     //file
     file : File = null
-    file_name : any
-    file_size :any
+    file_name : any =''
+    file_size :any =''
     
-
+    HideGrid:boolean = true;
     
     add_name :any
     add_num : any
@@ -42,6 +39,7 @@ export class AppComponent{
     add_ps :any
     add_fname: any
     add_fsize:any
+    //
     defaultColDef = { 
         resizable: true ,
         width: 100,};
@@ -56,7 +54,6 @@ export class AppComponent{
         {headerName: 'File Size',field:'fsize'}
 
     ]
-    //,dob:" ",add:" ",ps:" ",fname:" ",fsize: " "
     
     rowData = [
         {num: 1, name: "Prayut", occ: "Nut Seller",dob:" ",add:" ",ps:" ",fname:" ",fsize: " "},
@@ -68,27 +65,25 @@ export class AppComponent{
     
     gridOptions = { 
         getRowNodeId :function(data) {
-            
             return data.num
         }
         
     }   
     constructor(){  
     }
-    onSelectionChanged() {
-        /*this.selectedNum = this.agGrid.api.getSelectedRows();
-        this.selectedNum = this.selectedNum.length === 1 ? this.selectedNum[0].num : '';
-        this.selectedName = this.agGrid.api.getSelectedRows();
-        this.selectedName = this.selectedNum.length === 1 ? this.selectedName[0].name : '';
-        this.selectedJob = this.agGrid.api.getSelectedRows();
-        this.selectedJob = this.selectedJob.length === 1 ? this.selectedJob[0].occ : '';*/
+    onSelectionChanged(event) {
+       
+        if(event)
+        {
+            this.HideGrid = false
+        }
+        //this.selectedNum = this.agGrid.api.getSelectedRows();
+        
         
         this.selectedAll = this.gridApi.getSelectedRows();
         this.selectedAll = this.selectedAll.length === 1 ? this.selectedAll[0] : '';
         //console.log(this.selectedAll.num)
-        //this.checkgrid = false
-       
-        
+        //this.checkgrid = false   
     }
     
     regist(){
@@ -98,9 +93,12 @@ export class AppComponent{
         this.add_birth =this.selectedAll.dob
         this.add_adr = this.selectedAll.add
         this.add_ps = this.selectedAll.ps
-        
+        this.add_fname = this.file_name
+        this.add_fsize = this.file_size
+
+
         var rowNode = this.gridApi.getRowNode(this.selectedAll.num-1)
-        console.log(rowNode)
+        //console.log(rowNode)
         var newData = {
             num:this.add_num,
             name:this.add_name,
@@ -108,15 +106,17 @@ export class AppComponent{
             dob:this.add_birth,
             add:this.add_adr,
             ps:this.add_ps,
-            fname:this.file_name,
-            fsize:this.file_size
+            fname:this.add_fname,
+            fsize:this.add_fsize
         };
         rowNode.updateData(newData)
         /*this.add_name = this.selectedAll.name
         var rowNode = this.gridApi.getRowNode(this.selectedAll.num);
         alert("param ที่ถูกส่งเข้ามา : "+ this.selectedAll.num + " . แถวที่กำลังจะถูกเปลี่ยน : " + rowNode.data.name);*/
-        this.selectedAll = ''
+        
         this.isChecked = true
+        this.HideGrid = true
+        
     }
     onGridReady(params) {
         this.gridApi = params.api;
@@ -131,6 +131,7 @@ export class AppComponent{
         let x  = this.file.size
         let n1 = Math.round((x / 1024));
         this.file_size = n1+'KB'
+        
         //console.log(n1)
     }
     check_btn(){
