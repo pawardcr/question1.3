@@ -1,0 +1,16 @@
+.menu{border-style:solid; width: 150px;  padding: 10px; margin: 20px; float: left;}
+.clear{clear: left;}
+/*div menu*/
+.div0{border-style: solid; height:200px; width: 450px;float: left; margin: 50px 0px 0px 50px;}
+
+
+/*for table*/
+.div1{border-style: solid; float: left; margin: 50px 0px 0px 50px;}
+td{border-style: solid; border-width: 1px;}
+input[type=number]::-webkit-inner-spin-button {opacity: 1;}
+input[type=number]{
+  width: 80px;
+  border-style: none;
+  outline: none;
+}
+input[type=text]{border-style: none; background-color: white; outline: none;}

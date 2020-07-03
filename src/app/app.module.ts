@@ -7,7 +7,8 @@ import { FormupdateComponent } from './formupdate/formupdate.component';
 import {Routes,RouterModule} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DragandDropComponent } from './dragand-drop/dragand-drop.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DragDropModule} from '@angular/cdk/drag-drop'
 
 
 const appRoutes: Routes = [
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     BrowserModule,
     AgGridModule.withComponents([]),
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
