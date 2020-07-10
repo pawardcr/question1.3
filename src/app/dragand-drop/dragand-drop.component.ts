@@ -13,9 +13,12 @@ export class DragandDropComponent implements OnInit {
   Allprice = [150,140,120,360]
 
   menu = new Array<string>(3)
+  //menu: string[]
   price = new Array<number>(3)
   count = [0,0,0,0]
-  total = new Array<number>(3)
+  //total = new Array<number>(3)
+  total:number[] =[0,0,0,0]
+  //sum:number=0
 
   coffee =["Coffee",150]
   tea=[2,"Tea",140]
@@ -42,14 +45,25 @@ export class DragandDropComponent implements OnInit {
     if(this.c1 == true){
       //this.count[0] +1
       this.total[0] = (this.Allprice[0] * this.count[0])
+      
     }
     if(this.c2 == true){
       //this.count[0] +1
       this.total[1] = (this.Allprice[1] * this.count[1])
-      console.log(this.total[1])
+      
     }
-    
+    if(this.c3 == true){
+      //this.count[0] +1
+      this.total[2] = (this.Allprice[2] * this.count[2])
+     
+    }
+    if(this.c4 == true){
+      //this.count[0] +1
+      this.total[3] = (this.Allprice[3] * this.count[3])
+      
+    }
   }
+  //this.total[0]+this.total[1]+this.total[2]+this.total[3]
   drop(event){
     event.preventDefault()
     let data = event.dataTransfer.getData('text');
@@ -65,10 +79,10 @@ export class DragandDropComponent implements OnInit {
     if(data == 'd2'){
       this.menu[1] = this.Allmenu[1]
       this.count[1] +=1
-      this.total[1] = (140 * this.count[1])
+      this.total[1] = (this.Allprice[1] * this.count[1])
       this.c2 = true
       //document.getElementById('d2').value = this.count[1]
-     
+      
     }
     if(data == 'd3'){
       this.menu[2] = this.Allmenu[2]
@@ -82,7 +96,9 @@ export class DragandDropComponent implements OnInit {
       this.total[3] = (this.Allprice[3] * this.count[3])
       this.c4 =true      
     } 
-
   }
-  
+  sum(){
+
+    return this.total[0]+this.total[1]+this.total[2]+this.total[3]
+  }
 }

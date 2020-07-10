@@ -12,7 +12,7 @@ import { DragDropModule} from '@angular/cdk/drag-drop'
 
 
 const appRoutes: Routes = [
-  {path: '', component: AppComponent},
+  //{path: '', component: AppComponent},
   //{path: '', redirectTo: '/formupdate', pathMatch: 'full' },
   {path: 'formupdate', component: FormupdateComponent},
   {path: 'dragand-drop', component: DragandDropComponent}
