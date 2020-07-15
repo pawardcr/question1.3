@@ -8,3 +8,13 @@
 
 /*html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
+
+
+td{border-style: solid; border-width: 1px;}
+input[type=number]::-webkit-inner-spin-button {opacity: 1;}
+input[type=number]{
+  width: 80px;
+  border-style: none;
+  outline: none;
+}
+input[type=text]{border-style: none; background-color: white; outline: none;}

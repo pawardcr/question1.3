@@ -1,7 +1,7 @@
 <html>
   <body>
     <div class="div0">
-      <div id="d1"class="menu" draggable="true" (dragstart)="drag($event)">
+      <div id="d1"class="menu" draggable="true" (dragstart)="drag($event)" (click)="createrow()">
         <span>{{Allmenu[0]}} {{Allprice[0]}} Baht</span>
       </div>
       <div id="d2" class="menu" draggable="true" (dragstart)="drag($event)">
@@ -14,9 +14,9 @@
         <span>{{Allmenu[3]}} {{Allprice[3]}} Baht</span>
       </div>
     </div>
-    <div class="div1">
-      <table>
-        <tr>
+    <div class="div1" (drop)="drop($event)"  (dragover)="allowDrop($event)">
+      <table id="table1">
+        <!--<tr>
           <td>
             <input type="text" size="5" (drop)="drop($event)"  (dragover)="allowDrop($event)" value="{{menu[0]}}">
             <input id="n1" type="number" size="1" [(ngModel)]="count[0]" (click)="updown()" min="0">
@@ -43,7 +43,7 @@
             <input type="number" size="1" [(ngModel)]="count[3]" (click)="updown()" min="0">
             <input type="text" size="5" value="{{total[3]}}"><span>Baht</span>
           </td>
-        </tr>
+        </tr>-->
       </table>
       <h2>Total: {{sum()}}</h2>
     </div>
