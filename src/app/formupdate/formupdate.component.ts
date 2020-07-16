@@ -20,12 +20,13 @@ export class FormupdateComponent implements OnInit {
   selectednode :any
   checkgrid :boolean
   //checkbox
-  isChecked : boolean = true;
+  isChecked : boolean = false
+  isChecked2 :boolean = true
   //file
   file : File = null
   file_name : any =''
   file_size :any =''
-  
+  i :number =0
   HideGrid:boolean = true;
   
   add_name :any
@@ -93,7 +94,6 @@ export class FormupdateComponent implements OnInit {
       this.add_fname = this.file_name
       this.add_fsize = this.file_size
 
-
       var rowNode = this.gridApi.getRowNode(this.selectedAll.num-1)
       //console.log(rowNode)
       var newData = {
@@ -111,16 +111,19 @@ export class FormupdateComponent implements OnInit {
       var rowNode = this.gridApi.getRowNode(this.selectedAll.num);
       alert("param ที่ถูกส่งเข้ามา : "+ this.selectedAll.num + " . แถวที่กำลังจะถูกเปลี่ยน : " + rowNode.data.name);*/
       
-      this.isChecked = true
+      this.isChecked = false
+      this.isChecked2 = true
+      this.i=0
       this.HideGrid = true
+      this.file_name = " "
+      this.file_size = " ";
       
-  }
+    }
   onGridReady(params) {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
   }
   ngOnInit(){
-
   }
   file_check(files){
       this.file = files.item(0)
@@ -132,14 +135,18 @@ export class FormupdateComponent implements OnInit {
       //console.log(n1)
   }
   check_btn(){
-      if (this.isChecked == false) 
-      {
-          this.isChecked = true;
-      } else 
-      {
-          this.isChecked = false;
-      }
+    console.log(this.i)
+    if (this.i %2 == 0) 
+    {
+        this.isChecked = true
+        this.isChecked2 = false
+        this.i+=1
+    } 
+    else if(this.i %2!=0)
+    {
+        this.i+=1
+        this.isChecked2 = true
+    }
+    console.log(this.i)
   }
-  
-  
 }

@@ -34,21 +34,21 @@
       <!--check box--> 
       <tr>
         <td align="right">
-          <input type="checkbox" (click)="check_btn()"></td> <!--check box-->
+          <input id="ck1" type="checkbox" (click)="check_btn()"  [checked]="isChecked"></td> <!--check box-->
         <td><label>More Details</label></td>
       </tr>
       <!--check before input-->
       <tr>
         <td align="right"><label>BirthDate</label></td>
-        <td><input type="date" id="birth" [disabled]="isChecked" [(ngModel)]="selectedAll.dob"></td>
+        <td><input type="date" id="birth" [disabled]="isChecked2" [(ngModel)]="selectedAll.dob"></td>
       </tr>
       <tr>
         <td align="right"><label>Address</label></td>
-        <td><textarea rows="1" cols="25" id="add" [disabled]="isChecked" [(ngModel)]="selectedAll.add"></textarea><br></td>
+        <td><textarea rows="1" cols="25" id="add" [disabled]="isChecked2" [(ngModel)]="selectedAll.add"></textarea><br></td>
       </tr>
       <tr>
           <td align="right"><label>P.S.</label></td>
-          <td><textarea rows="4" cols="25" id="ps" [disabled]="isChecked" [(ngModel)]="selectedAll.ps"></textarea><br></td>
+          <td><textarea rows="4" cols="25" id="ps" [disabled]="isChecked2" [(ngModel)]="selectedAll.ps"></textarea><br></td>
       </tr>
 
       <!--No check before input-->
@@ -58,11 +58,11 @@
       </tr>
       <tr>
         <td align="right"><label>File Name</label></td>
-        <td><label id="file_name" >{{selectedAll.fname}}</label></td>
+        <td><label id="file_name" >{{file_name}}</label></td>
       </tr>
       <tr>
         <td align="right"><label>File Size</label></td>
-        <td> <label id="size">{{selectedAll.fsize}}</label></td>
+        <td> <label id="size">{{file_size}}</label></td>
       </tr>
       <tr>
         <td align="right">

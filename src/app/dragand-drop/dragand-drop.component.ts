@@ -35,6 +35,10 @@ export class DragandDropComponent implements OnInit {
   y:number = 0
   a:number =0
   b:number =0
+  c:number =0
+  d:number =0
+  f:number =0
+  g:number =0
   constructor(){
   }
   createrow(){
@@ -71,7 +75,10 @@ export class DragandDropComponent implements OnInit {
     event.preventDefault()
     let data = event.dataTransfer.getData('text');
     var table = <HTMLTableElement> document.getElementById("table1");
-    var rows = (<HTMLTableElement> document.getElementById("table1")).rows.length;
+    for(var i=0;rows <10;i++){
+      var rows =i
+    }
+    //var rows = 10
     console.log(rows)
     // add row 
     //var row = table.insertRow(0)
@@ -104,7 +111,7 @@ export class DragandDropComponent implements OnInit {
         this.x+=1
       }
      
-      if(rows != 0){
+      if(this.y == 0){
         (<HTMLTableElement> document.getElementById("table1")).deleteRow(this.x-1)
         inputText1.setAttribute("value",this.menu[0])
         inputText2.setAttribute("value",this.total[0].toString())
@@ -169,6 +176,27 @@ export class DragandDropComponent implements OnInit {
       this.count[2] +=1
       this.total[2] = (this.Allprice[2] * this.count[2])
       this.c3 =true
+      if(this.c ==0){
+        inputText1.setAttribute("value",this.menu[2])
+        inputText2.setAttribute("value",this.total[2].toString())
+        inputNumber.setAttribute("value",this.count[2].toString())
+        inputNumber.setAttribute('ng-Model', 'count[2]')
+        var row = table.insertRow(this.c)
+        var cell2 = row.insertCell(0)
+        cell2.append(inputText1,inputNumber,inputText2,'Baht')
+        this.c+=1
+
+      }
+      if(this.d ==0){
+        (<HTMLTableElement> document.getElementById("table1")).deleteRow(this.c-1)
+        inputText1.setAttribute("value",this.menu[2])
+        inputText2.setAttribute("value",this.total[2].toString())
+        inputNumber.setAttribute("value",this.count[2].toString())
+        inputNumber.setAttribute('ng-Model', 'count[2]')
+        var row = table.insertRow(this.d)
+        var cell2 = row.insertCell(0)
+        cell2.append(inputText1,inputNumber,inputText2,'Baht')
+      }
      
     }
     if(data == 'd4'){
