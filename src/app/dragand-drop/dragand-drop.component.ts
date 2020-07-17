@@ -100,12 +100,12 @@ export class DragandDropComponent implements OnInit {
       this.count[0] +=1
       this.total[0] = (this.Allprice[0] * this.count[0])
       this.c1 = true
-      if(rows == 0){
+      if(this.x == 0){
         inputText1.setAttribute("value",this.menu[0])
         inputText2.setAttribute("value",this.total[0].toString())
         inputNumber.setAttribute("value",this.count[0].toString())
         inputNumber.setAttribute('ng-Model','count[0]')
-        var row = table.insertRow(0)
+        var row = table.insertRow(this.x)
         var cell1 = row.insertCell(0)
         cell1.append(inputText1,inputNumber,inputText2,'Baht')
         this.x+=1
@@ -117,7 +117,7 @@ export class DragandDropComponent implements OnInit {
         inputText2.setAttribute("value",this.total[0].toString())
         inputNumber.setAttribute("value",this.count[0].toString())
         inputNumber.setAttribute('ng-Model','count[0]')
-        var row = table.insertRow(rows)
+        var row = table.insertRow(this.y)
         var cell1 = row.insertCell(0)
         cell1.append(inputText1,inputNumber,inputText2,'Baht')
       }
@@ -204,7 +204,26 @@ export class DragandDropComponent implements OnInit {
       this.count[3] +=1
       this.total[3] = (this.Allprice[3] * this.count[3])
       this.c4 =true
-      
+      if(this.f==0){
+        inputText1.setAttribute("value",this.menu[3])
+        inputText2.setAttribute("value",this.total[3].toString())
+        inputNumber.setAttribute("value",this.count[3].toString())
+        inputNumber.setAttribute('ng-Model', 'count[3]')
+        var row = table.insertRow(this.f)
+        var cell2 = row.insertCell(0)
+        cell2.append(inputText1,inputNumber,inputText2,'Baht')
+        this.f+=1
+      }
+      if(this.g ==0){
+        (<HTMLTableElement> document.getElementById("table1")).deleteRow(this.f-1)
+        inputText1.setAttribute("value",this.menu[3])
+        inputText2.setAttribute("value",this.total[3].toString())
+        inputNumber.setAttribute("value",this.count[3].toString())
+        inputNumber.setAttribute('ng-Model', 'count[3]')
+        var row = table.insertRow(this.g)
+        var cell2 = row.insertCell(0)
+        cell2.append(inputText1,inputNumber,inputText2,'Baht')
+      }
     } 
   }
   sum(){
