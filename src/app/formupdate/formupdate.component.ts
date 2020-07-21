@@ -37,7 +37,7 @@ export class FormupdateComponent implements OnInit {
   add_ps :any
   add_fname: any
   add_fsize:any
-  //
+
   defaultColDef = { 
       resizable: true ,
       width: 100,};
@@ -50,9 +50,7 @@ export class FormupdateComponent implements OnInit {
       {headerName: 'P.S',field:'ps'},
       {headerName: 'File Name',field:'fname'},
       {headerName: 'File Size',field:'fsize'}
-
   ]
-  
   rowData = [
       {num: 1, name: "Prayut", occ: "Nut Seller",dob:" ",add:" ",ps:" ",fname:" ",fsize: " "},
       {num: 2, name: "Pravit", occ:"Watch seller",dob:" ",add:" ",ps:" ",fname:" ",fsize: " "},
@@ -107,9 +105,6 @@ export class FormupdateComponent implements OnInit {
           fsize:this.add_fsize
       };
       rowNode.updateData(newData)
-      /*this.add_name = this.selectedAll.name
-      var rowNode = this.gridApi.getRowNode(this.selectedAll.num);
-      alert("param ที่ถูกส่งเข้ามา : "+ this.selectedAll.num + " . แถวที่กำลังจะถูกเปลี่ยน : " + rowNode.data.name);*/
       
       this.isChecked = false
       this.isChecked2 = true
@@ -117,7 +112,7 @@ export class FormupdateComponent implements OnInit {
       this.HideGrid = true
       this.file_name = " "
       this.file_size = " ";
-      
+      //test
     }
   onGridReady(params) {
       this.gridApi = params.api;
@@ -131,8 +126,6 @@ export class FormupdateComponent implements OnInit {
       let x  = this.file.size
       let n1 = Math.round((x / 1024));
       this.file_size = n1+'KB'
-      
-      //console.log(n1)
   }
   check_btn(){
     console.log(this.i)

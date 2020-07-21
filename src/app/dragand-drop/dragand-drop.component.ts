@@ -93,7 +93,7 @@ export class DragandDropComponent implements OnInit {
     inputNumber.setAttribute("type", "number");
     inputNumber.setAttribute("min","0")
     inputNumber.setAttribute("click","updown()")
-     
+    
     if(data =='d1'){
       //console.log(this.x)
       this.menu[0] = this.Allmenu[0]
