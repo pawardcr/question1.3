@@ -1,49 +1,49 @@
 <html>
   <body>
     <div class="div0">
-      <div id="d1"class="menu" draggable="true" (dragstart)="drag($event)" (click)="createrow()">
+      <div id="d1"class="menu" draggable="true" (dragstart)="drag($event)" [hidden]="c1">
         <span>{{Allmenu[0]}} {{Allprice[0]}} Baht</span>
       </div>
-      <div id="d2" class="menu" draggable="true" (dragstart)="drag($event)">
+      <div id="d2" class="menu" draggable="true" (dragstart)="drag($event)" [hidden]="c2">
         <span>{{Allmenu[1]}} {{Allprice[1]}} Baht</span>
       </div>
-      <div id="d3" class="menu" draggable="true" (dragstart)="drag($event)">
+      <div id="d3" class="menu" draggable="true" (dragstart)="drag($event)" [hidden]="c3">
         <span>{{Allmenu[2]}} {{Allprice[2]}} Baht</span>
       </div>
-      <div id="d4" class="menu" draggable="true" (dragstart)="drag($event)">
+      <div id="d4" class="menu" draggable="true" (dragstart)="drag($event)" [hidden]="c4">
         <span>{{Allmenu[3]}} {{Allprice[3]}} Baht</span>
       </div>
     </div>
     <div class="div1" (drop)="drop($event)"  (dragover)="allowDrop($event)">
       <table id="table1">
-        <!--<tr>
+        <tr *ngIf="c1">
           <td>
             <input type="text" size="5" (drop)="drop($event)"  (dragover)="allowDrop($event)" value="{{menu[0]}}">
             <input id="n1" type="number" size="1" [(ngModel)]="count[0]" (click)="updown()" min="0">
             <input type="text" size="5" value="{{total[0]}}">Baht
           </td>
         </tr>
-        <tr>
+        <tr *ngIf="c2">
           <td>
             <input type="text" size="5" (drop)="drop($event)"  (dragover)="allowDrop($event)" value="{{menu[1]}}">
             <input id="n2" type="number" size="1" [(ngModel)]="count[1]" (click)="updown()" min="0">
             <input type="text" size="5" value="{{total[1]}}"><span>Baht</span>
           </td>
         </tr>
-        <tr>
+        <tr *ngIf="c3">
           <td >
             <input type="text" size="5" (drop)="drop($event)"  (dragover)="allowDrop($event)" value="{{menu[2]}}">
             <input type="number" size="1"  [(ngModel)]="count[2]"  (click)="updown()" min="0">
             <input type="text" size="5" value="{{total[2]}}"><span>Baht</span>
           </td>
         </tr>
-        <tr>
+        <tr *ngIf="c4">
           <td >
             <input type="text" size="5" (drop)="drop($event)"  (dragover)="allowDrop($event)" value="{{menu[3]}}">
             <input type="number" size="1" [(ngModel)]="count[3]" (click)="updown()" min="0">
             <input type="text" size="5" value="{{total[3]}}"><span>Baht</span>
           </td>
-        </tr>-->
+        </tr>
       </table>
       <h2>Total: {{sum()}}</h2>
     </div>
